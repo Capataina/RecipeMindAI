@@ -29,7 +29,7 @@ const ingredientData = [
         groups: [
             {
                 name: "Proteins",
-                ingredients: ["Chicken Breast", "Chicken Thighs", "Turkey Mince", "Minced Beef", "Tofu", "Salmon", "Tuna", "Shrimp", "Greek Yogurt", "Cottage Cheese", "Lentils", "Beans", "Chickpeas"]
+                ingredients: ["Chicken Breast", "Chicken Thighs", "Turkey Mince", "Minced Beef", "Tofu", "Salmon", "Tuna", "Shrimp", "Greek Yogurt", "Cottage Cheese", "Lentils", "Beans", "Chickpeas", "Whey Protein", "Casein Protein"]
             },
             {
                 name: "Grains",
