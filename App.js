@@ -1,5 +1,6 @@
 import {SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
 import IngredientList from "./components/IngredientList";
+import MealPlanning from "./components/MealPlanning";
 
 export default function App() {
     return (
@@ -7,7 +8,7 @@ export default function App() {
             <ScrollView contentContainerStyle={styles.scrollView}>
                 <View style={styles.content}>
                     <IngredientList/>
-                    {/* Add other components here as needed */}
+                    <MealPlanning></MealPlanning>
                 </View>
             </ScrollView>
         </SafeAreaView>
