@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Switch, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
 export default function MealPlanning() {
@@ -94,7 +94,7 @@ export default function MealPlanning() {
     };
 
     return (
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
             <Text style={styles.title}>Meal Planning</Text>
 
             <View style={styles.inputContainer}>
@@ -217,17 +217,16 @@ export default function MealPlanning() {
             <TouchableOpacity style={styles.button} onPress={handleSubmit}>
                 <Text style={styles.buttonText}>Generate Meal Plan</Text>
             </TouchableOpacity>
-        </ScrollView>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#F0E0C0',
         padding: 20,
         borderRadius: 10,
-        marginTop: 20,
+        marginVertical: 20
     },
     title: {
         fontSize: 24,
@@ -259,6 +258,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
         marginTop: 20,
+        marginBottom: 10,
     },
     buttonText: {
         color: '#FFFFFF',
