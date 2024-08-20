@@ -12,8 +12,50 @@ export default function MealPlanning() {
     const [dietaryPreference, setDietaryPreference] = useState('');
     const [allergies, setAllergies] = useState('');
     const [useMetricSystem, setUseMetricSystem] = useState(true);
+    const [highProtein, setHighProtein] = useState(false);
+
+    const calculateCalories = () => {
+        if (!height || !weight || !age) {
+            return null;
+        }
+
+        const heightCm = useMetricSystem ? parseFloat(height) : parseFloat(height) * 2.54;
+        const weightKg = useMetricSystem ? parseFloat(weight) : parseFloat(weight) / 2.2046;
+        const ageYears = parseFloat(age);
+
+        // Rough bodyfat estimation for accuracy
+        const bodyFatPercentage = 1.20 * (weightKg / Math.pow(heightCm / 100, 2)) + 0.23 * ageYears - 16.2;
+        const leanBodyMass = weightKg * (1 - bodyFatPercentage / 100);
+
+        // Calculate BMR using both Mifflin-St Jeor and Katch-McArdle formulas
+        const bmrMifflin = 10 * weightKg + 6.25 * heightCm - 5 * ageYears + 5;
+        const bmrKatchMcArdle = 370 + (21.6 * leanBodyMass);
+
+        // Take the average of the calculations
+        const bmr = (bmrMifflin + bmrKatchMcArdle) / 2;
+
+        // Apply activity factor
+        const activityFactors = {
+            light: 1.275,
+            moderate: 1.5,
+            very: 1.7
+        };
+
+        // Calculate TDEE and apply a slight reduction factor for accuracy
+        const tdee = bmr * activityFactors[activityLevel] * 0.95;
+
+        return Math.round(tdee);
+    };
+
+    const calculateProteinTarget = () => {
+        if (!weight || !highProtein) return null;
+        const weightKg = useMetricSystem ? parseFloat(weight) : parseFloat(weight) / 2.2046;
+        return Math.round(weightKg * 2); // 2g per kg of body weight
+    };
 
     const handleSubmit = () => {
+        const estimatedCalories = calculateCalories();
+        const proteinTarget = calculateProteinTarget();
         const formData = {
             numMeals,
             numSnacks,
@@ -22,9 +64,22 @@ export default function MealPlanning() {
             age,
             activityLevel,
             dietaryPreference,
-            allergies
+            allergies,
+            estimatedCalories,
+            highProtein,
+            proteinTarget
         };
         console.log(formData);
+
+        const dataForAI = {
+            numMeals,
+            numSnacks,
+            estimatedCalories,
+            highProtein,
+            proteinTarget,
+            dietaryPreference,
+            allergies
+        }
     };
 
     const convertToMetric = (value, type) => {
@@ -133,6 +188,20 @@ export default function MealPlanning() {
                     <Picker.Item label="Paleo" value="paleo"/>
                 </Picker>
             </View>
+
+            <View style={styles.switchContainer}>
+                <Text style={styles.label}>High Protein Diet:</Text>
+                <Switch
+                    value={highProtein}
+                    onValueChange={setHighProtein}
+                />
+            </View>
+            {highProtein && (
+                <Text style={styles.infoText}>
+                    Protein target: {calculateProteinTarget() || '--'} g
+                    (2x body weight in kg)
+                </Text>
+            )}
 
             <View style={styles.inputContainer}>
                 <Text style={styles.label}>Allergies or Intolerances:</Text>
