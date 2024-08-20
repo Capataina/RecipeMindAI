@@ -9,7 +9,7 @@ export default function IngredientGroup({group, toggleIngredient, selectedIngred
                 <Ingredient
                     key={index}
                     name={ingredient}
-                    toggleIngredients={() => toggleIngredient(ingredient)}
+                    toggleIngredient={() => toggleIngredient(ingredient)}
                     isSelected={selectedIngredients.includes(ingredient)}
                 />
             ))}
@@ -20,10 +20,16 @@ export default function IngredientGroup({group, toggleIngredient, selectedIngred
 const styles = StyleSheet.create({
     ingredientGroup: {
         marginBottom: 20,
+        alignItems: 'center',
+        backgroundColor: '#F0E0C0',
+        padding: 10,
+        borderRadius: 8,
+        width: '100%',
     },
     groupName: {
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
+        color: '#3A3A3A',
     },
 });

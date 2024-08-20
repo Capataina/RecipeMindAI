@@ -8,11 +8,19 @@ const ingredientData = [
         groups: [
             {
                 name: "Fruits",
-                ingredients: ["Apple", "Banana", "Mango"]
+                ingredients: [
+                    "Apple", "Banana", "Mango", "Pineapple", "Kiwi", "Coconut",
+                    "Blueberry", "Raspberry", "Blackberry", "Strawberry",
+                    "Melon", "Watermelon", "Grapes", "Orange", "Pomegranate", "Cherry"
+                ]
             },
             {
                 name: "Vegetables",
-                ingredients: ["Bell Peppers", "Broccoli", "Potatoes"]
+                ingredients: [
+                    "Bell Peppers", "Broccoli", "Potatoes", "Carrots", "Tomatoes", "Onions",
+                    "Lettuce", "Cauliflower", "Spinach", "Cucumber", "Zucchini", "Eggplant",
+                    "Mushrooms", "Corn", "Peas", "Green Beans", "Brussels Sprouts"
+                ]
             }
         ]
     },
@@ -21,11 +29,15 @@ const ingredientData = [
         groups: [
             {
                 name: "Proteins",
-                ingredients: ["Chicken Breast", "Minced Beef", "Tofu"]
+                ingredients: ["Chicken Breast", "Chicken Thighs", "Turkey Mince", "Minced Beef", "Tofu", "Salmon", "Tuna", "Shrimp", "Greek Yogurt", "Cottage Cheese", "Lentils", "Beans", "Chickpeas"]
             },
             {
                 name: "Grains",
-                ingredients: ["Rice", "Pasta", "Beans"]
+                ingredients: ["Rice", "Pasta", "Quinoa", "Oats", "Couscous", "Buckwheat", "Bulgur"]
+            },
+            {
+                name: "Fats",
+                ingredients: ["Avocado", "Almonds", "Walnuts", "Chia seeds", "Sunflower seeds", "Pumpkin seeds", "Macadamia nuts", "Cashews", "Olive oil", "Sesame oil", "Butter"]
             }
         ]
     }
@@ -65,8 +77,9 @@ export default function IngredientList() {
 
 const styles = StyleSheet.create({
     ingredientList: {
-        width: '60%',
-        padding: 10,
+        backgroundColor: '#E6D2B5',
+        padding: 20,
+        borderRadius: 10,
     },
     ingredientListColumns: {
         flexDirection: 'row',
@@ -75,5 +88,7 @@ const styles = StyleSheet.create({
     ingredientListText: {
         marginTop: 20,
         fontSize: 16,
+        textAlign: 'center',
+        color: '#4A4A4A',
     }
 });

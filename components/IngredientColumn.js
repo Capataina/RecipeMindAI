@@ -19,7 +19,7 @@ export default function IngredientColumn({data, toggleIngredient, selectedIngred
 
 const styles = StyleSheet.create({
     ingredientColumn: {
-        width: '48%', // Adjust as needed to fit your layout
-        marginHorizontal: '1%',
+        width: '48%',
+        alignItems: 'center', // Center the content horizontally
     },
 });

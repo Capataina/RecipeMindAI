@@ -17,27 +17,40 @@ export default function Ingredient({name, toggleIngredient, isSelected}) {
     );
 }
 
+
 const styles = StyleSheet.create({
     ingredient: {
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 10,
-        padding: 5,
+        padding: 10,
+        borderRadius: 5,
+        backgroundColor: '#FFFFFF',
+        width: '90%',
     },
     pressed: {
         opacity: 0.7,
     },
+    selected: {
+        backgroundColor: '#D4C4A7', // Darker background when selected
+    },
     checkbox: {
         width: 20,
         height: 20,
-        borderWidth: 1,
-        borderColor: '#000',
+        borderWidth: 2,
+        borderColor: '#7A6F5D',
         marginRight: 10,
+        borderRadius: 4,
     },
     checked: {
-        backgroundColor: '#000',
+        backgroundColor: '#7A6F5D',
     },
     ingredientName: {
         fontSize: 16,
+        color: '#4A4A4A',
+    },
+    selectedText: {
+        fontWeight: 'bold',
+        color: '#3A3A3A',
     },
 });
