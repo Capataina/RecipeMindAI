@@ -1,15 +1,25 @@
+import React from 'react';
 import {StyleSheet, View} from 'react-native';
+import IngredientGroup from './IngredientGroup';
 
-export default function IngredientColumn({  }) {
+export default function IngredientColumn({data, toggleIngredient, selectedIngredients}) {
     return (
-        <View></View>
+        <View style={styles.ingredientColumn}>
+            {data.groups.map((group, index) => (
+                <IngredientGroup
+                    key={index}
+                    group={group}
+                    toggleIngredient={toggleIngredient}
+                    selectedIngredients={selectedIngredients}
+                />
+            ))}
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     ingredientColumn: {
-        width: 320,
-        height: 440,
-        borderRadius: 18,
+        width: '48%', // Adjust as needed to fit your layout
+        marginHorizontal: '1%',
     },
 });

@@ -1,15 +1,29 @@
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import Ingredient from "./Ingredient";
 
-export default function IngredientGroup({  }) {
+export default function IngredientGroup({group, toggleIngredient, selectedIngredients}) {
     return (
-        <View></View>
+        <View style={styles.ingredientGroup}>
+            <Text style={styles.groupName}>{group.name}</Text>
+            {group.ingredients.map((ingredient, index) => (
+                <Ingredient
+                    key={index}
+                    name={ingredient}
+                    toggleIngredients={() => toggleIngredient(ingredient)}
+                    isSelected={selectedIngredients.includes(ingredient)}
+                />
+            ))}
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     ingredientGroup: {
-        width: 320,
-        height: 440,
-        borderRadius: 18,
+        marginBottom: 20,
+    },
+    groupName: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
     },
 });
