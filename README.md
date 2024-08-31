@@ -47,6 +47,8 @@ To run RecipeMindAI locally, follow these steps:
 
 4. Use the Expo Go app on your mobile device or an emulator to view the application.
 
+5. Additionally, the app can be used on the web as well, through the address provided by Metro in the console logs.
+
 ## Usage
 
 1. Add your available ingredients using the IngredientList component.
